@@ -8,7 +8,9 @@ import { ApiService } from "./api.service";
 })
 export class ExampleService {
 
-  constructor(private apiService: ApiService) { }
+  constructor(
+    private apiService: ApiService
+  ) { }
 
   getExampleProducts = (url: string, params: PaginationParams): Observable<ExampleProducts> => {
     return this.apiService.get(url, {params, responseType: "json"});

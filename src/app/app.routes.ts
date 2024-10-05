@@ -1,21 +1,34 @@
 import { NgModule } from "@angular/core";
-import { PreloadAllModules, RouterModule, Routes } from "@angular/router";
+import { RouterModule, Routes } from "@angular/router";
+import { AuthComponent } from "./features/auth/auth.component";
 import { DashboardComponent } from "./features/dashboard/dashboard.component";
 import { SettingsComponent } from "./features/settings/settings.component";
+import { SidebarComponent } from "./layouts/sidebar/sidebar.component";
 
 export const routes: Routes = [
   {
     path: "",
-    component: DashboardComponent
+    component: SidebarComponent,
+    children: [
+      {
+        path: "",
+        component: DashboardComponent
+      },
+      {
+        path: "settings",
+        component: SettingsComponent
+      }
+    ]
   },
   {
-    path: "settings",
-    component: SettingsComponent
+    path: "auth",
+    component: AuthComponent
   }
+  
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes, { preloadingStrategy: PreloadAllModules })],
+  imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
-export class AppRoutingModule {}
+export class AppRoutingModule { }
