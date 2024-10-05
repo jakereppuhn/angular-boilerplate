@@ -1,5 +1,6 @@
-import { Component } from "@angular/core";
+import { Component, OnInit } from "@angular/core";
 import { RouterOutlet } from "@angular/router";
+import { ThemeService } from "./services/theme.service";
 
 @Component({
   selector: "app-root",
@@ -7,6 +8,12 @@ import { RouterOutlet } from "@angular/router";
   imports: [RouterOutlet],
   templateUrl: "./app.component.html",
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   title = "angular-boilerplate";
+
+  constructor(private themeService: ThemeService) { }
+
+  ngOnInit() {
+    this.themeService.loadSavedTheme();
+  }
 }

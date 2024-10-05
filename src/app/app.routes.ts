@@ -1,6 +1,7 @@
 import { NgModule } from "@angular/core";
 import { RouterModule, Routes } from "@angular/router";
 import { AuthComponent } from "./features/auth/auth.component";
+import { CalendarComponent } from "./features/calendar/calendar.component";
 import { DashboardComponent } from "./features/dashboard/dashboard.component";
 import { SettingsComponent } from "./features/settings/settings.component";
 import { SidebarLayoutComponent } from "./layouts/sidebar-layout/sidebar-layout.component";
@@ -14,6 +15,10 @@ export const routes: Routes = [
       {
         path: "",
         component: DashboardComponent
+      },
+      {
+        path: "calendar",
+        component: CalendarComponent
       },
       {
         path: "settings",

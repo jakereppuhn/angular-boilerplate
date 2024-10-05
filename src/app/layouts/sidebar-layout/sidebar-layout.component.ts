@@ -17,10 +17,10 @@ export class SidebarLayoutComponent implements OnInit {
 
   links = [
     { path: "/", label: "Dashboard", icon: "layout-dashboard"},
-    { path: "/settings", label: "Settings", icon: "settings"},
+    { path: "/calendar", label: "Calendar", icon: "calendar"},
   ];
 
-  baseLinkClasses = "group relative my-1 flex cursor-pointer items-center rounded-md px-3 py-2 font-medium transition-all ease-in-out";
+  baseLinkClasses = "group relative flex cursor-pointer items-center rounded-md px-3 py-2 font-medium transition-all ease-in-out";
   activeLinkClasses = "bg-gradient-to-tr from-blue-200 to-blue-100 text-blue-800";
   inactiveLinkClasses = "text-primary hover:bg-background";
 

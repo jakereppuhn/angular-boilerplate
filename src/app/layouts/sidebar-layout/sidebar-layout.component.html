@@ -2,7 +2,7 @@
   <aside
     class="bg-secondary border-border flex h-full w-max flex-col border-r shadow-sm transition-all duration-300 ease-in-out"
   >
-    <div class="flex items-center justify-between p-4 pb-0">
+    <div class="flex items-center justify-between p-4 pb-2">
       <div
         class="overflow-hidden transition-all duration-200 ease-in-out"
         [ngClass]="{
@@ -21,7 +21,7 @@
     </div>
 
     <div class="flex flex-1 flex-col justify-between">
-      <ul class="px-4">
+      <ul class="flex flex-col gap-2 px-4">
         <li *ngFor="let link of links">
           <a [href]="link.path" [ngClass]="getLinkClasses(link.path)">
             <lucide-icon [name]="link.icon" />
@@ -43,6 +43,27 @@
             </div>
           </a>
         </li>
+        <hr class="bg-primary h-0.5 w-full rounded-full" />
+        <li>
+          <a href="settings" [ngClass]="getLinkClasses('/settings')">
+            <lucide-icon name="settings" />
+            <span
+              class="overflow-hidden transition-all ease-in-out"
+              [ngClass]="{
+                'ml-3 w-44': sidebarExpanded,
+                'ml-0 w-0': !sidebarExpanded,
+              }"
+              >Settings</span
+            >
+
+            <div
+              *ngIf="!sidebarExpanded"
+              class="invisible absolute left-full ml-6 -translate-x-3 rounded-md bg-blue-100 px-2 py-1 text-sm text-blue-800 opacity-20 transition-all group-hover:visible group-hover:translate-x-0 group-hover:opacity-100"
+            >
+              Settings
+            </div>
+          </a>
+        </li>
       </ul>
 
       <div class="px-4 pb-4">
@@ -54,20 +75,22 @@
           <lucide-icon *ngIf="getTheme() !== 'dark'" name="moon" />
           <lucide-icon *ngIf="getTheme() === 'dark'" name="sun" />
           <span
-            class="overflow-hidden transition-all ease-in-out text-left"
+            class="overflow-hidden text-start transition-all duration-0 ease-in-out"
             [ngClass]="{
               'ml-3 w-44': sidebarExpanded,
               'ml-0 w-0': !sidebarExpanded,
             }"
           >
-            Theme</span
-          >
+            <span *ngIf="getTheme() !== 'dark'">Dark</span>
+            <span *ngIf="getTheme() === 'dark'">Light</span>
+          </span>
 
           <div
             *ngIf="!sidebarExpanded"
-            class="invisible absolute left-full ml-6 -translate-x-3 rounded-md bg-blue-100 px-2 py-1 text-sm text-blue-800 opacity-20 transition-all group-hover:visible group-hover:translate-x-0 group-hover:opacity-100"
+            class="invisible absolute left-full ml-6 -translate-x-3 whitespace-nowrap rounded-md bg-blue-100 px-2 py-1 text-sm text-blue-800 opacity-20 transition-all group-hover:visible group-hover:translate-x-0 group-hover:opacity-100"
           >
-            Theme
+            <span *ngIf="getTheme() !== 'dark'">Dark Mode</span>
+            <span *ngIf="getTheme() === 'dark'">Light Mode</span>
           </div>
         </button>
       </div>
