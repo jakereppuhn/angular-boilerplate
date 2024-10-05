@@ -1,0 +1,17 @@
+<div class="flex h-screen bg-red-500">
+  <aside
+    class="flex-1 bg-blue-500 p-4 transition-all ease-in-out"
+    [ngClass]="{
+      'max-w-60': sidebarExpanded,
+      'max-w-16': !sidebarExpanded,
+    }"
+  >
+    <button (click)="toggleSidebar()" class="bg-blue-200 p-2">x</button>
+  </aside>
+
+  <div class="flex flex-1 flex-col">
+    <main class="flex-1">
+      <router-outlet></router-outlet>
+    </main>
+  </div>
+</div>
