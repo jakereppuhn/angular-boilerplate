@@ -1,50 +1,77 @@
 <div class="flex h-screen">
   <aside
-    class="h-full w-max border-r bg-white shadow-sm transition-all duration-300 ease-in-out"
+    class="bg-secondary border-border flex h-full w-max flex-col border-r shadow-sm transition-all duration-300 ease-in-out"
   >
-    <div class="flex flex-1 items-center justify-between p-4 pb-0">
-      <img
-        src=""
-        alt=""
-        class="transition-all ease-in-out"
+    <div class="flex items-center justify-between p-4 pb-0">
+      <div
+        class="overflow-hidden transition-all duration-200 ease-in-out"
         [ngClass]="{
           'w-full': sidebarExpanded,
           'w-0': !sidebarExpanded,
         }"
-      />
+      ></div>
 
       <button
         (click)="toggleSidebar()"
-        class="rounded-lg bg-neutral-100 px-3 py-2 hover:bg-neutral-200"
+        class="text-primary hover:bg-background rounded-lg px-3 py-2 transition-all ease-in-out"
       >
         <lucide-icon *ngIf="sidebarExpanded" name="chevron-first" />
         <lucide-icon *ngIf="!sidebarExpanded" name="chevron-last" />
       </button>
     </div>
 
-    <ul class="px-4">
-      <li *ngFor="let link of links">
-        <a [href]="link.path" [ngClass]="getLinkClasses(link.path)">
-          <lucide-icon [name]="link.icon" />
+    <div class="flex flex-1 flex-col justify-between">
+      <ul class="px-4">
+        <li *ngFor="let link of links">
+          <a [href]="link.path" [ngClass]="getLinkClasses(link.path)">
+            <lucide-icon [name]="link.icon" />
+            <span
+              class="overflow-hidden transition-all ease-in-out"
+              [ngClass]="{
+                'ml-3 w-44': sidebarExpanded,
+                'ml-0 w-0': !sidebarExpanded,
+              }"
+            >
+              {{ link.label }}</span
+            >
+
+            <div
+              *ngIf="!sidebarExpanded"
+              class="invisible absolute left-full ml-6 -translate-x-3 rounded-md bg-blue-100 px-2 py-1 text-sm text-blue-800 opacity-20 transition-all group-hover:visible group-hover:translate-x-0 group-hover:opacity-100"
+            >
+              {{ link.label }}
+            </div>
+          </a>
+        </li>
+      </ul>
+
+      <div class="px-4 pb-4">
+        <button
+          (click)="toggleTheme()"
+          [class]="baseLinkClasses"
+          class="hover:bg-background"
+        >
+          <lucide-icon *ngIf="getTheme() !== 'dark'" name="moon" />
+          <lucide-icon *ngIf="getTheme() === 'dark'" name="sun" />
           <span
-            class="overflow-hidden transition-all ease-in-out"
+            class="overflow-hidden transition-all ease-in-out text-left"
             [ngClass]="{
               'ml-3 w-44': sidebarExpanded,
               'ml-0 w-0': !sidebarExpanded,
             }"
           >
-            {{ link.label }}</span
+            Theme</span
           >
 
           <div
             *ngIf="!sidebarExpanded"
             class="invisible absolute left-full ml-6 -translate-x-3 rounded-md bg-blue-100 px-2 py-1 text-sm text-blue-800 opacity-20 transition-all group-hover:visible group-hover:translate-x-0 group-hover:opacity-100"
           >
-            {{ link.label }}
+            Theme
           </div>
-        </a>
-      </li>
-    </ul>
+        </button>
+      </div>
+    </div>
   </aside>
 
   <div class="flex flex-1 flex-col">

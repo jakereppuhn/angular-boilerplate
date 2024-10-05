@@ -1,6 +1,7 @@
 import { CommonModule } from "@angular/common";
 import { Component, OnInit } from "@angular/core";
 import { Router, RouterOutlet } from "@angular/router";
+import { ThemeService } from "../../services/theme.service";
 import { SharedModule } from "../../shared/shared.module";
 
 @Component({
@@ -19,16 +20,18 @@ export class SidebarLayoutComponent implements OnInit {
     { path: "/settings", label: "Settings", icon: "settings"},
   ];
 
-  baseLinkClasses = "group relative my-1 flex cursor-pointer items-center rounded-md px-3 py-2 font-medium transition-colors";
+  baseLinkClasses = "group relative my-1 flex cursor-pointer items-center rounded-md px-3 py-2 font-medium transition-all ease-in-out";
   activeLinkClasses = "bg-gradient-to-tr from-blue-200 to-blue-100 text-blue-800";
-  inactiveLinkClasses = "text-gray-600 hover:bg-blue-50";
+  inactiveLinkClasses = "text-primary hover:bg-background";
 
   constructor(
-    private router: Router
+    private router: Router,
+    private themeService: ThemeService
   ) {
     this.currentRoute = this.router.url;
   }
 
+  
   ngOnInit() {
     const savedState = localStorage.getItem("sidebarExpanded");
     this.sidebarExpanded = savedState === "true";
@@ -45,5 +48,26 @@ export class SidebarLayoutComponent implements OnInit {
   toggleSidebar() {
     this.sidebarExpanded = !this.sidebarExpanded;
     localStorage.setItem("sidebarExpanded", String(this.sidebarExpanded));
+  }
+
+  getTheme() {
+    let theme;
+
+    if (document.body.classList.contains("dark")) {
+      theme = "dark";
+    } else {
+      theme = "light";
+    }
+    return theme;
+  }
+
+  toggleTheme() {
+    const theme = this.getTheme();
+    
+    if (theme === "dark") {
+      this.themeService.setLightTheme();
+    } else {
+      this.themeService.setDarkTheme();
+    }
   }
 }
