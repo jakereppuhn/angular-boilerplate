@@ -15,7 +15,7 @@ export class SidebarLayoutComponent implements OnInit {
   currentRoute: string;
 
   links = [
-    { path: "/", label: "Dashboard", icon: "home"},
+    { path: "/", label: "Dashboard", icon: "layout-dashboard"},
     { path: "/settings", label: "Settings", icon: "settings"},
   ];
 
