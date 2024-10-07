@@ -1,4 +1,5 @@
 {
+  "prettier.requireConfig": true,
   "editor.formatOnSave": true,
   "editor.codeActionsOnSave": {
     "source.fixAll": "always",

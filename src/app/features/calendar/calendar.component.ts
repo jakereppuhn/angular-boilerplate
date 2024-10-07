@@ -6,6 +6,4 @@ import { Component } from "@angular/core";
   imports: [],
   templateUrl: "./calendar.component.html",
 })
-export class CalendarComponent {
-
-}
+export class CalendarComponent {}
