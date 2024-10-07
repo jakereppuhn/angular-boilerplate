@@ -1,4 +1,34 @@
 {
-  // For more information, visit: https://go.microsoft.com/fwlink/?linkid=827846
-  "recommendations": ["angular.ng-template"]
+  // For more information, visit: https://go.microsoft.com
+  "recommendations": [
+    "adpyke.codesnap",
+    "angular.ng-template",
+    "bradlc.vscode-tailwindcss",
+    "christian-kohler.npm-intellisense",
+    "dbaeumer.vscode-eslint",
+    "dsznajder.es7-react-js-snippets",
+    "esbenp.prettier-vscode",
+    "firsttris.vscode-jest-runner",
+    "formulahendry.auto-close-tag",
+    "formulahendry.auto-rename-tag",
+    "formulahendry.code-runner",
+    "jock.svg",
+    "mechatroner.rainbow-csv",
+    "mikestead.dotenv",
+    "ms-azuretools.vscode-docker",
+    "ms-python.debugpy",
+    "ms-python.python",
+    "ms-python.vscode-pylance",
+    "oderwat.indent-rainbow",
+    "ritwickdey.liveserver",
+    "simonsiefke.svg-preview",
+    "streetsidesoftware.code-spell-checker",
+    "vscode-icons-team.vscode-icons",
+    "vscodevim.vim",
+    "xabikos.javascriptsnippets",
+    "zhuangtongfa.material-theme"
+  ]
 }
+
+
+// cat extensions.json | xargs -L 1 code --install-extension
